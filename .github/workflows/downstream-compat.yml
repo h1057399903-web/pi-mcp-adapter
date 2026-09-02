@@ -24,8 +24,16 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Build interactive visualizer example
+        run: |
+          npm install --prefix examples/interactive-visualizer \
+            --no-package-lock --no-audit --no-fund
+          npm run --prefix examples/interactive-visualizer build
       - run: npm run typecheck
       - run: npm test
+      - run: npm run test:oauth
+      - run: npm run test:conformance
+      - run: npm pack --dry-run
 
   workbench-compat:
     runs-on: ubuntu-latest
