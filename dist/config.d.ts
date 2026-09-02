@@ -85,10 +85,12 @@ export interface ConfigWritePreview {
     afterText: string;
     diffText: string;
 }
+export type SharedConfigTarget = "project" | "global";
 export declare function getPiGlobalConfigPath(overridePath?: string): string;
 export declare function getGenericGlobalConfigPath(): string;
 export declare function getProjectConfigPath(cwd?: string): string;
 export declare function getProjectPiConfigPath(cwd?: string): string;
+export declare function getSharedConfigPath(target: SharedConfigTarget, cwd?: string): string;
 export declare function getConfigDiscoveryPaths(overridePath?: string, cwd?: string): ConfigDiscoveryPath[];
 export declare function findAvailableImportConfigs(cwd?: string): DiscoveredImportConfig[];
 export declare function getMcpStandardConfigSummary(overridePath?: string, cwd?: string): McpStandardConfigSummary;
@@ -113,6 +115,8 @@ export declare function ensureCompatibilityImports(importKinds: ImportKind[], ov
     added: ImportKind[];
 };
 export declare function buildStarterProjectConfig(): McpConfig;
+export declare function previewStarterSharedConfig(target: SharedConfigTarget, cwd?: string): ConfigWritePreview;
+export declare function writeStarterSharedConfig(target: SharedConfigTarget, cwd?: string): string;
 export declare function previewStarterProjectConfig(cwd?: string): ConfigWritePreview;
 export declare function writeStarterProjectConfig(cwd?: string): string;
 export declare function previewSharedServerEntry(filePath: string, serverName: string, entry: ServerEntry): ConfigWritePreview;

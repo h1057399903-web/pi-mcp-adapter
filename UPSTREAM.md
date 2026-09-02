@@ -16,7 +16,7 @@ keeping the adapter close to its active upstream.
 | Downstream integration branch | `main` |
 | Downstream release/default branch | `stable` |
 | Bootstrap base | `a42ff1e35e402d7887f450d4367777cbfe76ff84` (`v2.32.0`) |
-| Last reviewed upstream commit | `a42ff1e35e402d7887f450d4367777cbfe76ff84` |
+| Last synced upstream commit | `10a45367e033a32026987a75d6f401e37340c86f` (`v2.32.1`) |
 
 ## Intentional downstream changes
 
@@ -66,7 +66,7 @@ For each upstream release or selected commit:
 2. Create `sync/upstream-<version>` from downstream `main`.
 3. Merge the selected upstream commit. Do not squash it; preserving upstream
    ancestry makes later synchronization and auditing simpler.
-4. Update the provenance table's **Last reviewed upstream commit**.
+4. Update the provenance table's **Last synced upstream commit**.
 5. Record upstream range, release notes, conflicts, security/audit findings,
    compatibility result, and rollback SHA in the PR.
 6. Run `npm ci`, `npm run typecheck`, `npm test`, and the downstream compatibility

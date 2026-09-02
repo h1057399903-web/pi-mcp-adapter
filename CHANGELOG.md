@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.32.1] - 2026-09-01
+
+### Fixed
+- The published package now includes the updated public helper build artifacts for the `2.32.0` config and MCP Apps changes.
+
 ## [2.32.0] - 2026-09-01
 
 ### Highlights
