@@ -93,6 +93,9 @@ export function getProjectConfigPath(cwd = process.cwd()) {
 export function getProjectPiConfigPath(cwd = process.cwd()) {
     return resolve(cwd, getConfigDirName(), PROJECT_PI_CONFIG_NAME);
 }
+export function getSharedConfigPath(target, cwd = process.cwd()) {
+    return target === "project" ? getProjectConfigPath(cwd) : getGenericGlobalConfigPath();
+}
 export function getConfigDiscoveryPaths(overridePath, cwd = process.cwd()) {
     return getConfigSources(overridePath, cwd).map((source) => ({
         label: source.label,
@@ -976,16 +979,22 @@ export function buildStarterProjectConfig() {
         mcpServers: {},
     };
 }
-export function previewStarterProjectConfig(cwd = process.cwd()) {
-    const targetPath = getProjectConfigPath(cwd);
+export function previewStarterSharedConfig(target, cwd = process.cwd()) {
+    const targetPath = getSharedConfigPath(target, cwd);
     const nextRaw = { mcpServers: buildStarterProjectConfig().mcpServers };
     return buildConfigWritePreview(targetPath, nextRaw);
 }
-export function writeStarterProjectConfig(cwd = process.cwd()) {
-    const targetPath = getProjectConfigPath(cwd);
+export function writeStarterSharedConfig(target, cwd = process.cwd()) {
+    const targetPath = getSharedConfigPath(target, cwd);
     const raw = { mcpServers: buildStarterProjectConfig().mcpServers };
     writeRawConfigObject(targetPath, raw);
     return targetPath;
+}
+export function previewStarterProjectConfig(cwd = process.cwd()) {
+    return previewStarterSharedConfig("project", cwd);
+}
+export function writeStarterProjectConfig(cwd = process.cwd()) {
+    return writeStarterSharedConfig("project", cwd);
 }
 export function previewSharedServerEntry(filePath, serverName, entry) {
     const raw = readRawConfigObject(filePath);
