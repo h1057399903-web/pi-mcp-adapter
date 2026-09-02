@@ -6,11 +6,11 @@ import { spawnSync } from "node:child_process";
 const source = "git:github.com/h1057399903-web/pi-mcp-adapter";
 const bootstrapSha = "a42ff1e35e402d7887f450d4367777cbfe76ff84";
 const expectedStableSha = process.env.PI_EXPECTED_STABLE_SHA;
-const workbenchRoot = resolve(
-  process.env.PI_WORKBENCH_DIR ?? join(process.cwd(), "..", "pi-plugin-workbench"),
+const piInstallRoot = resolve(
+  process.env.PI_INSTALL_ROOT ?? join(process.cwd(), "..", "pi-plugin-workbench"),
 );
 const piCli = join(
-  workbenchRoot,
+  piInstallRoot,
   "node_modules",
   "@earendil-works",
   "pi-coding-agent",

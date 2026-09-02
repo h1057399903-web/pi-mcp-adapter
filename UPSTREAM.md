@@ -23,10 +23,11 @@ keeping the adapter close to its active upstream.
 Downstream-only files are kept separate from adapter implementation code:
 
 - `UPSTREAM.md` — provenance, synchronization, release, and rollback policy.
-- `.github/workflows/downstream-compat.yml` — upstream tests plus Workbench/Pi
-  compatibility and disposable install validation.
+- `.github/workflows/downstream-compat.yml` — upstream tests plus disposable
+  install validation on the public downstream.
 - `downstream/verify-pi-compat.mjs` — starts Pi with both packages and verifies
-  their command surfaces coexist.
+  their command surfaces coexist; the private Workbench repository invokes it
+  from its pilot workflow because a fork token cannot read the private sibling.
 - `downstream/verify-distribution.mjs` — exercises fresh install, update,
   commit-pinned rollback, and return to the stable lane in an isolated Pi home.
 
